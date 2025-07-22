@@ -204,7 +204,11 @@ module Omnibus
           # Microsoft's version listing (more general than the above) is here:
           #
           # https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-          #
+          # First check if we already have a friendly version name
+          return platform_version if ["2000", "xp", "2003r2", "2008", "7", "2008r2",
+                                     "2012", "8", "2012r2", "8.1", "10", "11",
+                                     "2016", "2019", "2022", "2025"].include?(platform_version)
+
           case platform_version
           when "5.0.2195", "2000"   then "2000"
           when "5.1.2600", "xp"     then "xp"
@@ -222,7 +226,23 @@ module Omnibus
           # version is the same as Windows 2012R2. It's only here for completeness
           # and documentation.
           when /6\.3\.\d+/, "8.1" then "8.1"
-          when "10", /^10\.0/ then "10"
+          # Server versions with specific build numbers
+          # Windows Server 2016 "10.0.14393"
+          # Windows Server 2019 "10.0.17763"
+          # Windows Server 2022 "10.0.20348"
+          # Windows Server 2025 "10.0.25398", "10.0.26100"
+          when "10.0.14393" then "2016"
+          when "10.0.17763" then "2019"
+          when "10.0.20348" then "2022"
+          when "10.0.25398", "10.0.26100" then "2025"
+
+          # Windows 11 versions (specific build numbers)
+          when "10.0.22000", "10.0.22621", "10.0.22631" then "11"
+
+          # Default Windows 10 case - catch any remaining 10.0.x versions not specifically matched
+          when "10", /10\.0\.\d+/ then "10"
+          # For future Windows 11 with actual 11.0 version number
+          when "11", /11\.0/ then "11"
           else
             raise UnknownPlatformVersion.new(platform, platform_version)
           end
