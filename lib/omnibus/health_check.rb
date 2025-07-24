@@ -1,4 +1,5 @@
 
+
 # Copyright:: Copyright (c) Chef Software Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -556,7 +557,20 @@ module Omnibus
                        when "aix"
                          AIX_WHITELIST_LIBS
                        else
-                         WHITELIST_LIBS
+                         # custom condition for el-7ppc64
+                         # on chef-foundation/omnibus#el-7ppc64 is failing on health check
+                         # because of the libatomic.so.1 dependency
+                         # which is not available on ppc64 architecture
+                         # so we need to add it to the whitelist
+                         # for el-7ppc64 architecture
+                         # ref: https://buildkite.com/chef/chef-chef-foundation-main-omnibus-adhoc/builds/906#019850fd-0020-442e-890d-2a4795307622/7-15544
+                         if node["platform"] == "el" || node["platform"] == "redhat" || node["platform"] == "centos" &&
+                             node["platform_version"].start_with?("7") &&
+                             node["kernel"]["machine"] == "ppc64"
+                           EL7PPC64_WHITELIST_LIBS
+                         else
+                           WHITELIST_LIBS
+                         end
                        end
 
       whitelist_libs.each do |reg|
