@@ -48,6 +48,26 @@ ARCH_WHITELIST_LIBS = [
   /libutil\.so/,
 ].freeze
 
+EL7PPC64_WHITELIST_LIBS = [
+    /libatomic\.so/,
+    /ld-linux/,
+    /libanl\.so/,
+    /libc\.so/,
+    /libcrypt\.so/,
+    /libdl/,
+    /libfreebl\d\.so/,
+    /libgcc_s\.so/,
+    /libm\.so/,
+    /libnsl\.so/,
+    /libpthread/,
+    /libresolv\.so/,
+    /librt\.so/,
+    /libstdc\+\+\.so/,
+    /libutil\.so/,
+    /linux-vdso.+/,
+    /linux-gate\.so/,
+].freeze
+
 AIX_WHITELIST_LIBS = [
   /libc\.a/,
   /libcfg\.a/,
