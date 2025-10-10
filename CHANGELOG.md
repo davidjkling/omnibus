@@ -1,15 +1,16 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 
-<!-- latest_release 9.1.2 -->
-## [9.1.2](https://github.com/chef/omnibus/tree/9.1.2) (2025-10-01)
+<!-- latest_release 9.1.3 -->
+## [9.1.3](https://github.com/chef/omnibus/tree/9.1.3) (2025-10-10)
 
 #### Merged Pull Requests
-- Sean sype simmons/chef 24775 omnibus configuration pipeline configurations3 cache cconfiguration [#1177](https://github.com/chef/omnibus/pull/1177) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- Updating ohai and license_scout [#1179](https://github.com/chef/omnibus/pull/1179) ([johnmccrae](https://github.com/johnmccrae))
 <!-- latest_release -->
 <!-- release_rollup since=9.0.24 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Updating ohai and license_scout [#1179](https://github.com/chef/omnibus/pull/1179) ([johnmccrae](https://github.com/johnmccrae)) <!-- 9.1.3 -->
 - Sean sype simmons/chef 24775 omnibus configuration pipeline configurations3 cache cconfiguration [#1177](https://github.com/chef/omnibus/pull/1177) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.1.2 -->
 - attempting to configure a s3 private acl setting [#1174](https://github.com/chef/omnibus/pull/1174) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.1.1 -->
 - Sean sype progress/chef 21530 platform support windows2025 [#1170](https://github.com/chef/omnibus/pull/1170) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 9.1.0 -->
